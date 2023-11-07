@@ -5,6 +5,7 @@ dist-ssr
 *.local
 coverage
 stats.html
+.idea
 
 # 包管理器
 # package-lock.json
