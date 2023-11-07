@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from '@/App.vue'
 import router from '@/router'
 
@@ -21,7 +22,7 @@ const pinia = createPinia()
  *
  * @see https://prazdevs.github.io/pinia-plugin-persistedstate/zh/guide/
  */
-// pinia.use(piniaPluginPersistedstate)
+pinia.use(piniaPluginPersistedstate)
 
 createApp(App)
   .use(pinia) // 启用 Pinia
