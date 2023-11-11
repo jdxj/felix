@@ -34,6 +34,7 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
+    "@babel/types": "^7.23.3",
     "@bassist/eslint": "^0.5.0",
     "@bassist/tsconfig": "^0.1.1",
     "@bassist/uno": "^0.1.3",

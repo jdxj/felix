@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useMessageStore = defineStore('message', {
+  persist: true,
   state: () => ({
     message: 'Hello World',
   }),
