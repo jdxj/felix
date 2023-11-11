@@ -26,6 +26,7 @@
   "dependencies": {
     "@bassist/progress": "^0.2.2",
     "@bassist/utils": "^0.13.0",
+    "@element-plus/icons-vue": "^2.1.0",
     "axios": "^1.6.0",
     "element-plus": "^2.4.2",
     "pinia": "^2.1.6",
