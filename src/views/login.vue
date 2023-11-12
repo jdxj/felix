@@ -11,29 +11,40 @@
       size="large"
     />
 
-    <el-button class="btn" type="primary" round @click="pc">登录</el-button>
+    <el-button class="btn" type="primary" round @click="login">登录</el-button>
   </div>
 </template>
 
 <script setup lang="ts">
+import axios from 'axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useMyStore } from '@/stores'
+
+const router = useRouter()
+const store = useMyStore()
 
 const name = ref('')
 const pass = ref('')
-const router = useRouter()
 
 
-function pc() {
-  if (name.value === 'abc' && pass.value === 'def') {
-    router.push({
-      name: 'myHome',
-    })
-  } else {
-    alert('invalid')
+async function login() {
+  const res = await axios.get('http://localhost:8080/token', {
+    params: {
+      name: name.value,
+      pass: pass.value,
+    },
+  })
+  if (res.data.code != 0) {
+    alert('登陆失败')
+    return
   }
-}
 
+  store.token = res.data.data.token
+  await router.push({
+    name: 'myHome',
+  })
+}
 </script>
 
 <style scoped lang="less">

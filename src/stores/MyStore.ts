@@ -5,5 +5,6 @@ export const useMyStore = defineStore( {
   persist: true,
   state: () => ({
     message: 'Hello World bb',
+    token: '',
   }),
 })

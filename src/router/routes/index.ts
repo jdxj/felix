@@ -1,11 +1,21 @@
 import type { RouteRecordRaw } from 'vue-router'
+import {useMyStore} from '@/stores'
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'root',
-    redirect: {
-      name: 'login'
+    redirect: () => {
+      const store = useMyStore()
+      if (store.token != '') {
+        return {
+          name: 'myHome',
+        }
+      } else {
+        return {
+          name: 'login',
+        }
+      }
     }
   },
   {
