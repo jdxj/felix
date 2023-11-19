@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
-import {useMyStore} from '@/stores'
+import { useMyStore } from '@/stores'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -9,11 +9,11 @@ const routes: RouteRecordRaw[] = [
       const store = useMyStore()
       if (store.token != '') {
         return {
-          name: 'myHome',
+          name: 'myHome'
         }
       } else {
         return {
-          name: 'login',
+          name: 'login'
         }
       }
     }
@@ -32,6 +32,14 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/myHome.vue'),
     meta: {
       title: 'myHome'
+    }
+  },
+  {
+    path: '/shares/:id',
+    name: 'shares',
+    component: () => import('@/components/Share.vue'),
+    meta: {
+      title: 'share'
     }
   }
   /**

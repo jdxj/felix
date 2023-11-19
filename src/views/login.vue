@@ -29,7 +29,7 @@ const pass = ref('')
 
 
 async function login() {
-  const res = await axios.get('http://localhost:8080/token', {
+  const res = await axios.get('https://shirley.jdxj.org/token', {
     params: {
       name: name.value,
       pass: pass.value,

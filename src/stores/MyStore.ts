@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { type Share } from '@/types/shares'
 
 export const useMyStore = defineStore( {
   id: 'MyStore',
@@ -6,5 +7,6 @@ export const useMyStore = defineStore( {
   state: () => ({
     message: 'Hello World bb',
     token: '',
+    shares: new Array<Share>(),
   }),
 })

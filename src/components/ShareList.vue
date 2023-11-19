@@ -4,7 +4,7 @@
       <el-col :span="4">{{ index + 1 }}</el-col>
 
       <el-col :span="5">
-        <el-text type="primary">{{ item.remark }}</el-text>
+        <el-text type="primary">{{ item.remarks }}</el-text>
       </el-col>
 
       <el-col :span="5">
@@ -13,7 +13,7 @@
 
       <el-col :span="5">
         <el-icon>
-          <Edit />
+          <Edit @click="goToShare(item.id)" />
         </el-icon>
       </el-col>
 
@@ -28,20 +28,39 @@
 
 <script setup lang="ts">
 import { Delete, Edit } from '@element-plus/icons-vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import { useMyStore } from '@/stores'
+import axios from 'axios'
+import { useRouter } from 'vue-router'
+import { type ResponseData } from '@/types/response'
+import { type Share, type Shares } from '@/types/shares'
 
-const list = ref([
-  {
-    id: 1,
-    remark: 'zoe',
-    address: 'https://e.com'
-  },
-  {
-    id: 2,
-    remark: 'tina',
-    address: 'https://a.com'
-  }
-])
+const list = ref<Share[]>()
+
+onMounted(async () => {
+  const store = useMyStore()
+  const res = await axios.get<ResponseData<Shares>>(
+    'https://shirley.jdxj.org/api/shares',
+    {
+      headers: {
+        token: store.token,
+      },
+    },
+  )
+  list.value = res.data.data.shares
+  store.shares = res.data.data.shares
+})
+
+const router = useRouter()
+
+function goToShare(id: number) {
+  router.push({
+    name: 'shares',
+    params: {
+      id: id,
+    },
+  })
+}
 </script>
 
 <style scoped lang="less">

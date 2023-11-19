@@ -1,11 +1,9 @@
 <template>
-  <ShareList></ShareList>
-  <Share></Share>
+  <ShareList />
 </template>
 
 <script setup lang="ts">
 import ShareList from '@/components/ShareList.vue'
-import Share from '@/components/Share.vue'
 
 </script>
 
