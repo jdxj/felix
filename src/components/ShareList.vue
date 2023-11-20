@@ -23,6 +23,10 @@
         </el-icon>
       </el-col>
     </el-row>
+    <div class="row">
+      <el-button type="primary" class="btn" @click="goToShare(0)">添加
+      </el-button>
+    </div>
   </div>
 </template>
 
@@ -34,13 +38,14 @@ import axios from 'axios'
 import { useRouter } from 'vue-router'
 import { type ResponseData } from '@/types/response'
 import { type Share, type Shares } from '@/types/shares'
+import { URLPrefix } from '@/types/shares'
 
 const list = ref<Share[]>()
 
 onMounted(async () => {
   const store = useMyStore()
   const res = await axios.get<ResponseData<Shares>>(
-    'https://shirley.jdxj.org/api/shares',
+    URLPrefix + '/api/shares',
     {
       headers: {
         token: store.token,
@@ -67,5 +72,9 @@ function goToShare(id: number) {
 .row {
   margin: auto;
   width: 35%;
+}
+
+.btn {
+  float: right;
 }
 </style>

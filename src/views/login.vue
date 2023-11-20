@@ -20,6 +20,7 @@ import axios from 'axios'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useMyStore } from '@/stores'
+import { URLPrefix } from '@/types/shares'
 
 const router = useRouter()
 const store = useMyStore()
@@ -27,9 +28,8 @@ const store = useMyStore()
 const name = ref('')
 const pass = ref('')
 
-
 async function login() {
-  const res = await axios.get('https://shirley.jdxj.org/token', {
+  const res = await axios.get(URLPrefix + '/token', {
     params: {
       name: name.value,
       pass: pass.value,

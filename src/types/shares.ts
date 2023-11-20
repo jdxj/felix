@@ -21,3 +21,5 @@ export interface Share {
 export interface Shares {
   shares: Share[]
 }
+
+export const URLPrefix = 'http://localhost:8080'
